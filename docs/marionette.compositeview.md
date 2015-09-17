@@ -66,12 +66,12 @@ new MyComp({
 
 The `collection` option is not passed to the template context by
 default. If your `template` needs access to the collection, you'll
-need to pass it via `templateHelpers`:
+need to pass it via `templateContext`:
 
 ```js
 new MyComp({
   template: "#some-template",
-  templateHelpers: function() {
+  templateContext: function() {
     return { items: this.collection.toJSON() };
   }
 })
@@ -230,8 +230,6 @@ During the course of rendering a composite, several events will
 be triggered. These events are triggered with the [Marionette.triggerMethod](./marionette.functions.md#marionettetriggermethod)
 function, which calls a corresponding "on{EventName}" method on the view.
 
-* "before:render:template" / `onBeforeRenderTemplate` - before the `model` has been rendered
-* "render:template" / `onRenderTemplate` - after the `model` has been rendered
 * "before:render:collection" / `onBeforeRenderCollection` - before the collection of models is rendered
 * "render:collection" / `onRenderCollection` - after the collection of models has been rendered
 * "before:render" / `onBeforeRender` - before anything has been rendered
