@@ -531,16 +531,16 @@ describe('Behaviors', function() {
       expect(this.handleCollectionResetStub).to.have.been.calledOnce.and.calledOn(this.fooBehavior);
     });
 
-    it('should unbind model events on view undelegate', function() {
+    it('should unbind model events on view undelegateEntityEvents', function() {
       this.view = new this.ItemView({model: this.model});
-      this.view.undelegateEvents();
+      this.view.undelegateEntityEvents();
       this.model.set('foo', 'doge');
       expect(this.handleModelFooChangeStub).not.to.have.been.called;
     });
 
-    it('should unbind collection events on view undelegate', function() {
+    it('should unbind collection events on view undelegateEntityEvents', function() {
       this.view = new this.CollectionView({collection: this.collection});
-      this.view.undelegateEvents();
+      this.view.undelegateEntityEvents();
       this.collection.reset();
       expect(this.handleCollectionResetStub).not.to.have.been.called;
     });
@@ -689,6 +689,7 @@ describe('Behaviors', function() {
       });
 
       this.sinon.spy(this.view, 'undelegateEvents');
+      this.sinon.spy(this.view, 'undelegateEntityEvents');
     });
 
     it('should call initialize on grouped behaviors', function() {
